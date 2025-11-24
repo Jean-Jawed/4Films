@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>4 Films - Découvrez votre Top 4 Cinéma Personnel</title>
+    <meta name="description" content="Découvrez votre Top 4 de films selon vos critères : genre, année, pays, acteur, plateforme streaming. Trouvez aussi des films similaires à vos favoris. Powered by TMDB.">
+    <meta name="keywords" content="top films, meilleurs films, streaming, netflix, disney+, recommandations films, cinéma">
+    <meta name="author" content="Jawed Tahir">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://votre-domaine.com/">
+    <meta property="og:title" content="4 Films - Votre Top 4 Cinéma Personnel">
+    <meta property="og:description" content="Découvrez votre Top 4 de films personnalisé selon vos goûts et critères. Explorez par genre, année, acteur ou plateforme streaming.">
+    <meta property="og:image" content="https://votre-domaine.com/assets/logo.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://votre-domaine.com/">
+    <meta property="twitter:title" content="4 Films - Votre Top 4 Cinéma Personnel">
+    <meta property="twitter:description" content="Découvrez votre Top 4 de films personnalisé selon vos goûts et critères.">
+    <meta property="twitter:image" content="https://votre-domaine.com/assets/logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carousel.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="4 Films Logo" class="logo pulse">
+        </div>
+        <p class="tagline">Découvrez votre Top 4</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+            <div class="toggle-switch">
+                <input type="radio" id="mode-filters" name="mode" value="filters" checked>
+                <label for="mode-filters" class="toggle-label active">
+                    <span class="icon">🎬</span>
+                    Par filtres
+                </label>
+                
+                <input type="radio" id="mode-similar" name="mode" value="similar">
+                <label for="mode-similar" class="toggle-label">
+                    <span class="icon">✨</span>
+                    Films comme...
+                </label>
+            </div>
+        </div>
+
+        <!-- Filters Section -->
+        <section id="filters-section" class="filters-section active">
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label for="genre">Genre</label>
+                    <select id="genre" class="filter-select">
+                        <option value="">Tous les genres</option>
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="year">Année</label>
+                    <select id="year" class="filter-select">
+                        <option value="">Toutes les années</option>
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="country">Pays</label>
+                    <select id="country" class="filter-select">
+                        <option value="">Tous les pays</option>
+                        <option value="fr">France</option>
+                        <option value="en">États-Unis</option>
+                        <option value="es">Espagne</option>
+                        <option value="it">Italie</option>
+                        <option value="de">Allemagne</option>
+                        <option value="ja">Japon</option>
+                        <option value="ko">Corée du Sud</option>
+                        <option value="zh">Chine</option>
+                        <option value="hi">Inde</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="platform">Plateforme</label>
+                    <select id="platform" class="filter-select">
+                        <option value="">Toutes les plateformes</option>
+                        <option value="8">Netflix</option>
+                        <option value="9">Amazon Prime Video</option>
+                        <option value="337">Disney+</option>
+                        <option value="381">Canal+</option>
+                        <option value="2">Apple TV+</option>
+                        <option value="119">Amazon Prime</option>
+                        <option value="56">OCS</option>
+                    </select>
+                </div>
+
+                <div class="filter-group full-width">
+                    <label for="actor">Avec acteur</label>
+                    <div class="autocomplete-wrapper">
+                        <input 
+                            type="text" 
+                            id="actor" 
+                            class="filter-input"
+                            placeholder="Tom Hanks, Scarlett Johansson..."
+                            autocomplete="off"
+                        >
+                        <div id="actor-suggestions" class="autocomplete-suggestions"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="search-filters" class="btn-search">
+                <span class="icon">🔍</span>
+                Rechercher mon Top 4
+            </button>
+        </section>
+
+        <!-- Similar Movies Section -->
+        <section id="similar-section" class="similar-section">
+            <div class="similar-input-group">
+                <label for="movie-input">Films similaires à...</label>
+                <div class="autocomplete-wrapper">
+                    <input 
+                        type="text" 
+                        id="movie-input" 
+                        class="filter-input large"
+                        placeholder="Inception, Interstellar, The Matrix..."
+                        autocomplete="off"
+                    >
+                    <div id="movie-suggestions" class="autocomplete-suggestions"></div>
+                </div>
+            </div>
+
+            <button id="search-similar" class="btn-search">
+                <span class="icon">✨</span>
+                Trouver mon Top 4
+            </button>
+        </section>
+
+        <!-- Carousel Section -->
+        <section class="carousel-section">
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Recherche de votre Top 4...</p>
+            </div>
+
+            <div id="error-message" class="error-message hidden"></div>
+
+            <div id="carousel-container" class="carousel-container">
+                <div class="carousel-placeholder">
+                    <p class="placeholder-text">
+                        🎬 Sélectionnez vos critères pour découvrir votre Top 4
+                    </p>
+                </div>
+
+                <div id="carousel" class="carousel-3d">
+                    <!-- Cards populated by JS -->
+                </div>
+
+                <div class="carousel-controls hidden">
+                    <button id="prev-btn" class="carousel-btn prev" aria-label="Film précédent">
+                        &#10094;
+                    </button>
+                    <button id="next-btn" class="carousel-btn next" aria-label="Film suivant">
+                        &#10095;
+                    </button>
+                </div>
+
+                <div id="carousel-dots" class="carousel-dots hidden">
+                    <!-- Dots populated by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            Powered by 
+            <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB.org</a>
+            | 
+            By 
+            <a href="https://javed.fr" target="_blank" rel="noopener noreferrer" class="author">Jawed Tahir</a>
+            2025
+        </p>
+    </footer>
+
+    <!-- JavaScript Modules -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

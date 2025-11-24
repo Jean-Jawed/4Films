@@ -1,0 +1,29 @@
+# Configuration avec clés API
+js/config.js
+
+# Node modules (si jamais utilisé)
+node_modules/
+package-lock.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build directories (si jamais utilisé)
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
