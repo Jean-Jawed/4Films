@@ -420,6 +420,8 @@ input[type="radio"]:not(:checked) + .toggle-label {
 .carousel-container {
     position: relative;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     height: 600px;
     perspective: 2000px;
 }
